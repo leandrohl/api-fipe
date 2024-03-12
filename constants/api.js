@@ -1,0 +1,1 @@
+export const baseUrl = "https://parallelum.com.br/fipe/api/v1";
