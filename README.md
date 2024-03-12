@@ -1,12 +1,11 @@
-# api-fipe
-Consultar a API da tabela FIPE 
+#Consultar a API da tabela FIPE 
 
 ## Tecnologias utilizadas
  - Node.js
  - Express
  - Swagger
 
-## API consumida?
+## API consumida
 A documentação da API que disponibiliza os dados da FIPE, pode ser encontrada abaixo: </br>
 https://documenter.getpostman.com/view/7064033/SWT5jMGk#0efe83b5-d24c-40f9-b85d-d83426953a5f</br>
 
@@ -25,4 +24,4 @@ Todos os esses endpoints estão devidamente documentados na rota do sistema /doc
 ## Como executar?
  1) npm install
  2) npm start
- 3) acessar a url [httplo](http://localhost:5000/documentacao/)
+ 3) acessar a url [http://localhost:5000/documentacao/](http://localhost:5000/documentacao/)
