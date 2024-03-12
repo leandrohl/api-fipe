@@ -1,0 +1,326 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API RESTful - Consulta Tabela FIPE",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "paths": {
+    "/marcas/": {
+      "get": {
+        "tags": [
+          "Marcas"
+        ],
+        "summary": "Consulta de marcas de carros",
+        "description": "",
+        "parameters": [
+          {
+            "name": "chaveapi",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "PFSII"
+            ]
+          }
+        ]
+      }
+    },
+    "/modelos/marcas/{marcaId}": {
+      "get": {
+        "tags": [
+          "Modelos"
+        ],
+        "summary": "Consulta de modelos de uma determinada marca",
+        "description": "",
+        "parameters": [
+          {
+            "name": "marcaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Código da marca"
+          },
+          {
+            "name": "chaveapi",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "PFSII"
+            ]
+          }
+        ]
+      }
+    },
+    "/anos/marcas/{marcaId}/modelos/{modeloId}": {
+      "get": {
+        "tags": [
+          "Anos"
+        ],
+        "summary": "Consulta de anos de um determinado modelo de uma determinada marca",
+        "description": "",
+        "parameters": [
+          {
+            "name": "marcaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Código da marca"
+          },
+          {
+            "name": "modeloId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Código do modelo"
+          },
+          {
+            "name": "chaveapi",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "PFSII"
+            ]
+          }
+        ]
+      }
+    },
+    "/carros/marcas/{marcaId}/modelos/{modeloId}/anos/{anoMesId}": {
+      "get": {
+        "tags": [
+          "Info Carros"
+        ],
+        "summary": "Consulta de informações do ano de um determinado modelo de uma determinada marca",
+        "description": "",
+        "parameters": [
+          {
+            "name": "marcaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Código da marca"
+          },
+          {
+            "name": "modeloId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Código do modelo"
+          },
+          {
+            "name": "anoMesId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Ano-Mes do carro"
+          },
+          {
+            "name": "chaveapi",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": [
+              "PFSII"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "marcaModel": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "number",
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "Acura"
+          }
+        }
+      },
+      "modeloModel": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "number",
+            "example": 926
+          },
+          "nome": {
+            "type": "string",
+            "example": "A-10 2.5/4.1"
+          }
+        }
+      },
+      "anosModel": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "example": "2016-1"
+          },
+          "nome": {
+            "type": "string",
+            "example": "2016 Gasolina"
+          }
+        }
+      },
+      "carroModel": {
+        "type": "object",
+        "properties": {
+          "Valor": {
+            "type": "string",
+            "example": "R$ 58.862,00"
+          },
+          "Marca": {
+            "type": "string",
+            "example": "GM - Chevrolet"
+          },
+          "Modelo": {
+            "type": "string",
+            "example": "CRUZE HB Sport LT 1.8 16V FlexP. 5p Aut"
+          },
+          "AnoModelo": {
+            "type": "number",
+            "example": 2016
+          },
+          "Combustivel": {
+            "type": "string",
+            "example": "Gasolina"
+          },
+          "CodigoFipe": {
+            "type": "string",
+            "example": "004399-0"
+          },
+          "MesReferencia": {
+            "type": "string",
+            "example": "janeiro de 2020 "
+          },
+          "TipoVeiculo": {
+            "type": "number",
+            "example": 1
+          },
+          "SiglaCombustivel": {
+            "type": "string",
+            "example": "G"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "chaveapi",
+        "description": "Chave de autorização da nossa API"
+      }
+    }
+  }
+}
